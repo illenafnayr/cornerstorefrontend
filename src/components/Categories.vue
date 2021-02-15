@@ -3,7 +3,10 @@
              <span>SHOP</span>
         <div id="card-container">
             <div class="card" v-for="category in categories" :key="category.id">
-                {{category.name}}
+                <h1>
+                    {{category.name.toUpperCase()}}
+                </h1>
+                <img :src="category.imgsrc" :alt="category.name" class="cardImg" >
             </div>
         </div>
     </div>
@@ -43,7 +46,7 @@ export default {
     width: 100%;
     height: 400px;
     box-sizing: border-box;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -54,7 +57,9 @@ export default {
 }
 
 span {
-    margin: .5%;
+    padding: 1%;
+    width: 65%;
+    border-top: 1px solid black;
 }
 
 #card-container {
@@ -71,6 +76,17 @@ span {
     border: 2px solid black;
     margin-left: 1%;
     margin-right: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardImg {
+    width: 96%;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 2px;
 }
 
 </style>
