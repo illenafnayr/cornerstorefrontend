@@ -1,7 +1,6 @@
 <template>
   <NavBar id="navbar"/>
   <Carousel />
-  
 </template>
 
 <script>
@@ -20,11 +19,11 @@ export default {
 window.onscroll = function() {scrollFunction()};
 function scrollFunction() {
   if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-    document.getElementById("navbar").style.padding = "10px 10px";
+    document.getElementById("navbar").style.paddingTop = "10px";
     document.getElementById("logo").style.width = "20px";
     document.getElementById("titlelogo").style.display = "none"
   } else {
-    document.getElementById("navbar").style.padding = "40px 10px";
+    document.getElementById("navbar").style.paddingTop = "40px";
     document.getElementById("logo").style.width = "30px";
     document.getElementById("titlelogo").style.display = "inline"
   }
@@ -38,22 +37,29 @@ body {
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  /* margin-top: 60px; */
 }
 
 #navbar {
   overflow: hidden;
   background-color: #f1f1f1;
-  padding: 40px 10px; /* Large padding which will shrink on scroll (using JS) */
+  padding-top: 40px; /* Large padding which will shrink on scroll (using JS) */
   transition: 0.4s; /* Adds a transition effect when the padding is decreased */
-  position: fixed; /* Sticky/fixed navbar */
-  width: 100%;
+  position: sticky; /* Sticky/fixed navbar */
+  width: 100vw;
   top: 0; /* At the top */
   z-index: 99;
+  border-bottom: 5px solid #000;
 }
+/* 
+#carousel {
+  width: 100vw;
+} */
+
+/* @media only screen and (max-width: 1750px) {
+  body {
+    background-color: lightblue;
+  }
+} */
+
 </style>

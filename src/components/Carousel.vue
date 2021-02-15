@@ -92,11 +92,11 @@ data() {
 
 
 img {
-  height:600px;
+  height:400px;
+  width:auto;
   border: 2px solid #f1f1f1;
   border-radius: 2px;
   padding: 2%;
-  /* width:100% */
 }
 
 #carousel-container {
@@ -106,11 +106,15 @@ img {
 }
 
 #carousel {
-  padding-top: 12.5%;
+  padding-top: 1%;
   height: 50vh;
   width: 50%;
 }
 
-
+/* @media only screen and (max-width: 1750px) {
+  #carousel-container {
+    padding: .5%
+  }
+} */
 
 </style>
