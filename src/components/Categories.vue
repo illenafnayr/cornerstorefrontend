@@ -61,7 +61,7 @@ export default {
 span {
     padding: 1%;
     width: 65%;
-    border-top: 1px solid black;
+    border-top: 2px solid black;
     font-size: 28px;
 }
 
@@ -76,7 +76,7 @@ span {
     height: 96%;
     width: 250px;
     box-sizing: border-box;
-    border: 2px solid black;
+    border: 1px solid black;
     border-radius: 2px;
     margin-left: 2%;
     margin-right: 2%;

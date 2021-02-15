@@ -2,19 +2,22 @@
   <NavBar id="navbar"/>
   <Carousel />
   <Categories />
+  <Footer id="footer" />
 </template>
 
 <script>
 import Carousel from './components/Carousel.vue'
 import NavBar from './components/NavBar.vue'
 import Categories from './components/Categories.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   name: 'App',
   components: {
     NavBar,
     Carousel,
-    Categories
+    Categories,
+    Footer
   }
 }
 
@@ -54,15 +57,9 @@ body {
   z-index: 99;
   border-bottom: 5px solid #000;
 }
-/* 
-#carousel {
-  width: 100vw;
-} */
 
-/* @media only screen and (max-width: 1750px) {
-  body {
-    background-color: lightblue;
-  }
-} */
+#footer {
+  width: 100vw
+}
 
 </style>

@@ -93,7 +93,7 @@ data() {
 img {
   height: 525px;
   width:auto;
-  border: 2px solid #000;
+  border: 1px solid #000;
   border-radius: 2px;
   padding: 1%;
   object-fit: contain;
