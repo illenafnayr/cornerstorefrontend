@@ -12,13 +12,11 @@
 <!-- </div> -->
 <div id="carousel-container">
   <div id="carousel">
-    <div>
-      <div class="fade" v-for="i in [currentIndex]" :key="i">
-        <img :src="currentImg" />
-      </div>
+    <div class="fade" v-for="i in [currentIndex]" :key="i">
+      <img :src="currentImg" />
     </div>
   </div>
-  <!-- <Categories /> -->
+  <div class="fb-page" data-href="https://www.facebook.com/cornerstoreskateboards" data-tabs="timeline" data-width="" data-height="525" data-small-header="true" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/cornerstoreskateboards" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/cornerstoreskateboards">Corner Store Skateboards</a></blockquote></div>
 </div>
 
 </template>
@@ -75,7 +73,8 @@ data() {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .fade {
-  animation: fadeIn ease 10s
+  animation: fadeIn ease 10s;
+  width: 100%;
 }
 
 @keyframes fadeIn {
@@ -92,11 +91,14 @@ data() {
 
 
 img {
-  height:400px;
+  height: 525px;
   width:auto;
-  border: 2px solid #f1f1f1;
+  border: 2px solid #000;
   border-radius: 2px;
-  padding: 2%;
+  padding: 1%;
+  object-fit: contain;
+  width: 98%;
+  box-sizing: border-box;
 }
 
 #carousel-container {
@@ -107,8 +109,12 @@ img {
 
 #carousel {
   padding-top: 1%;
-  height: 50vh;
+  /* height: 50vh; */
   width: 50%;
+}
+
+.fb-page {
+  padding: 1%;
 }
 
 /* @media only screen and (max-width: 1750px) {
