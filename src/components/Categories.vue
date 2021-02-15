@@ -2,12 +2,14 @@
     <div id="categories-container">
              <span>SHOP</span>
         <div id="card-container">
-            <div class="card" v-for="category in categories" :key="category.id">
-                <h1>
-                    {{category.name.toUpperCase()}}
-                </h1>
-                <img :src="category.imgsrc" :alt="category.name" class="cardImg" >
-            </div>
+            <a :href="'/categories/' + category.uuid" v-for="category in categories" :key="category.id" class="card">
+                <div >
+                    <h2>
+                        {{category.name.toUpperCase()}}
+                    </h2>
+                    <img :src="category.imgsrc" :alt="category.name" class="cardImg" >
+                </div>
+            </a>
         </div>
     </div>
 </template>
@@ -60,6 +62,7 @@ span {
     padding: 1%;
     width: 65%;
     border-top: 1px solid black;
+    font-size: 28px;
 }
 
 #card-container {
@@ -74,12 +77,15 @@ span {
     width: 250px;
     box-sizing: border-box;
     border: 2px solid black;
-    margin-left: 1%;
-    margin-right: 1%;
+    border-radius: 2px;
+    margin-left: 2%;
+    margin-right: 2%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-decoration: none;
+    color: black;
 }
 
 .cardImg {

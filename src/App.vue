@@ -21,7 +21,7 @@ export default {
 //Change Nav Bar style on scroll
 window.onscroll = function() {scrollFunction()};
 function scrollFunction() {
-  if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+  if (document.body.scrollTop >= 80 || document.documentElement.scrollTop >= 80) {
     document.getElementById("navbar").style.paddingTop = "10px";
     document.getElementById("logo").style.width = "20px";
     document.getElementById("titlelogo").style.display = "none"
