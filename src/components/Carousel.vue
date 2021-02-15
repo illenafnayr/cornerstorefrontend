@@ -12,11 +12,11 @@
 <!-- </div> -->
 <div id="carousel-container">
   <div id="carousel">
-    <transition-group name="fade" tag="div">
-      <div v-for="i in [currentIndex]" :key="i">
+    <div>
+      <div class="fade" v-for="i in [currentIndex]" :key="i">
         <img :src="currentImg" />
       </div>
-    </transition-group>
+    </div>
   </div>
   <!-- <Categories /> -->
 </div>
@@ -51,7 +51,7 @@ data() {
 
   methods: {
     startSlide: function() {
-      this.timer = setInterval(this.next, 6000);
+      this.timer = setInterval(this.next, 10000);
     },
 
     next: function() {
@@ -74,25 +74,17 @@ data() {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 2s ease;
-  overflow: hidden;
-  visibility: hidden;
-  /* position:fixed; */
-  width:100%;
-  opacity: 1;
-  /* animation: fadeIn ease 1s; */
+.fade {
+  animation: fadeIn ease 10s
 }
 
-.fade-enter,
-.fade-leave-to {
-  visibility: hidden;
-  width:100%;
-  opacity: 0;
+@keyframes fadeIn {
+0% {opacity:0;}
+50% {opacity:1;}
+100% {opacity:0;}
 }
 
-/* @keyframes fadeIn {
+/* @keyframes fadeOut {
 0% {opacity:1;}
 100% {opacity:0;}
 } */
@@ -101,7 +93,7 @@ data() {
 
 img {
   height:600px;
-  border: 1px solid black;
+  border: 2px solid #f1f1f1;
   border-radius: 2px;
   padding: 2%;
   /* width:100% */
