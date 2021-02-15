@@ -1,15 +1,5 @@
 
 <template>
-<!-- <div id="carousel-container"> -->
-  <!-- <vueper-slides id="carousel" fade :touchable="false" :slideRatio="1194/1080" :fixed-height="true"  autoplay>
-    <vueper-slide v-for="(slide, i) in slides"
-      :key="i"
-      :image="slide.image"
-    />
-  </vueper-slides> -->
-
-
-<!-- </div> -->
 <div id="carousel-container">
   <div id="carousel">
     <div class="fade" v-for="i in [currentIndex]" :key="i">
@@ -22,8 +12,7 @@
 </template>
 
 <script>
-// import { VueperSlides, VueperSlide } from 'vueperslides'
-// import Categories from '../components/Categories.vue'
+
 
 export default {
   name: 'Carousel',
