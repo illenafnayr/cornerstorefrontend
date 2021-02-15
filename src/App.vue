@@ -1,17 +1,20 @@
 <template>
   <NavBar id="navbar"/>
   <Carousel />
+  <Categories />
 </template>
 
 <script>
 import Carousel from './components/Carousel.vue'
 import NavBar from './components/NavBar.vue'
+import Categories from './components/Categories.vue'
 
 export default {
   name: 'App',
   components: {
     NavBar,
-    Carousel
+    Carousel,
+    Categories
   }
 }
 
