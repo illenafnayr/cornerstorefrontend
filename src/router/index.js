@@ -17,13 +17,21 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: Shop
+    component: Shop,
+    children: [
+      {
+        path: ':name',
+        name:'Category',
+        component: Products
+      }
+    ]
   },
-  {
-    path: '/categories/:name',
-    name: 'Category',
-    component: Products
-  },
+  // {
+  //   path: '/categories/:name',
+  //   name: 'Category',
+  //   component: Products,
+    
+  // },
   {
     path: '/film',
     name: Film,

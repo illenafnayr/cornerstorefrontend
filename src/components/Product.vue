@@ -1,13 +1,9 @@
 <template>
     <div id="products-container">
-        <div id="card-container">
-            <div v-for="product in products" :v-if="this.props.name == product.category.name" :key="product.uuid" class="card">
-                <h2>
-                    {{product.name.toUpperCase()}}
-                </h2>
-                <!-- <img :src="category.imgsrc" :alt="category.name" class="cardImg" > -->
-            </div>
-        </div>
+      <div v-for="product in products" :key="product.uuid">
+        <span v-if="product.category.name.toLowerCase()===categoryName" :key="product.category.uuid">{{product.name}}</span>
+        <span v-else></span>
+      </div>
     </div>
 </template>
 
@@ -18,7 +14,8 @@ export default {
   name: 'Product',
   data() {
     return {
-      products: []
+      products: [],
+      categoryName: this.$route.params.name
     }
   },
   mounted() {

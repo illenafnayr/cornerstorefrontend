@@ -1,17 +1,18 @@
 <template>
-    <div id="categories-container">
-             <span>SHOP</span>
-        <div id="card-container">
-            <router-link :to="{ name: 'Category', params: { name: category.name.toLowerCase() }}" :href="'/categories/' + category.name.toLowerCase()" v-for="category in categories" :key="category.id" class="card">
-                <div >
-                    <h2>
-                        {{category.name.toUpperCase()}}
-                    </h2>
-                    <img :src="category.imgsrc" :alt="category.name" class="cardImg" >
-                </div>
-            </router-link>
-        </div>
-    </div>
+  <div id="categories-container">
+    <span>SHOP</span>
+      <div id="card-container">
+          <router-link :to="{ name: 'Category', params: { name: category.name.toLowerCase() }}" :href="'/categories/' + category.name.toLowerCase()" v-for="category in categories" :key="category.id" class="card">
+              <div >
+                  <h2>
+                    {{category.name.toUpperCase()}}
+                  </h2>
+                  <img :src="category.imgsrc" :alt="category.name" class="cardImg" >
+              </div>
+          </router-link>
+      </div>
+  </div>
+  <router-view :key="$route.path"></router-view>
 </template>
 
 <script>

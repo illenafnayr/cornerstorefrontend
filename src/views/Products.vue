@@ -1,20 +1,19 @@
 <template>
-  <NavBar id="navbar"/>
-  <Product :name="this.name"/>
-  <Footer id="footer" />
+
+  <Product />
 </template>
 
 <script>
-import NavBar from '../components/NavBar.vue'
+// import NavBar from '../components/NavBar.vue'
 import Product from '../components/Product.vue'
-import Footer from '../components/Footer.vue'
+// import Footer from '../components/Footer.vue'
 
 export default {
   name: 'App',
   components: {
-    NavBar,
+    // NavBar,
     Product,
-    Footer
+    // Footer
   }
 }
 

@@ -4,7 +4,7 @@
   <Footer id="footer" />
 </template>
 
-<script>
+<script>``
 import NavBar from '../components/NavBar.vue'
 import CRUD from '../components/CRUD.vue'
 import Footer from '../components/Footer.vue'
