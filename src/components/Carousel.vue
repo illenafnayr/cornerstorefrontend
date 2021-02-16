@@ -93,6 +93,9 @@ img {
 #carousel-container {
   display: flex;
   justify-content: center;
+  /* border-bottom: 2px solid black; */
+  /* width: 65%; */
+  margin: 0 auto;
 
 }
 

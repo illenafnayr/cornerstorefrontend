@@ -1,15 +1,12 @@
 <template>
-    <div id="categories-container">
-             <span>SHOP</span>
+    <div id="products-container">
         <div id="card-container">
-            <router-link :to="{ name: 'Category', params: { name: category.name.toLowerCase() }}" :href="'/categories/' + category.name.toLowerCase()" v-for="category in categories" :key="category.id" class="card">
-                <div >
-                    <h2>
-                        {{category.name.toUpperCase()}}
-                    </h2>
-                    <img :src="category.imgsrc" :alt="category.name" class="cardImg" >
-                </div>
-            </router-link>
+            <div v-for="product in products" :v-if="this.props.name == product.category.name" :key="product.uuid" class="card">
+                <h2>
+                    {{product.name.toUpperCase()}}
+                </h2>
+                <!-- <img :src="category.imgsrc" :alt="category.name" class="cardImg" > -->
+            </div>
         </div>
     </div>
 </template>
@@ -18,18 +15,18 @@
 import axios from 'axios'
 
 export default {
-  name: 'Categories',
+  name: 'Product',
   data() {
     return {
-      categories: []
+      products: []
     }
   },
   mounted() {
     axios
-      .get('http://localhost:4321/categories')
+      .get('http://localhost:4321/products')
       .then((response) => {
-        this.categories = response.data
-        console.log(this.categories)
+        this.products = response.data
+        console.log(this.products)
       })
       .catch((error) => {
         console.log(error)
@@ -41,11 +38,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-#categories-container{
+/* #categories-container{
     width: 100%;
     height: 400px;
     box-sizing: border-box;
-    /* border: 2px solid red; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -57,8 +53,6 @@ export default {
 
 span {
     padding: 1%;
-    /* width: 65%; */
-    /* border-top: 2px solid black; */
     font-size: 28px;
     color: #444;
 }
@@ -91,6 +85,6 @@ span {
     box-sizing: border-box;
     border: 1px solid #444;
     border-radius: 2px;
-}
+} */
 
 </style>

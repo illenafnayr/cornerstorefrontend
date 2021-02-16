@@ -5,7 +5,7 @@
     <nav>
         <ul>
             <li id="home" class="inactive"> <a href="/">HOME</a></li>
-            <li id="shop" class="inactive"><a href="/shop">SHOP</a></li>
+            <li id="shop" class="inactive"><a href="/categories">SHOP</a></li>
             <li id="film" class="inactive"><a href="/film">FILM</a></li>
             <li id="contact" class="inactive"><a href="/contact">CONTACT</a></li>
         </ul>
@@ -58,6 +58,7 @@ export default {
 ul {
     padding: 0;
     width: 50vw;
+    
 }
 
 .inactive {

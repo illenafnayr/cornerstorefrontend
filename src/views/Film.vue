@@ -1,22 +1,19 @@
 <template>
   <NavBar id="navbar"/>
-  <Carousel />
-  <Categories />
+  <Videos/>
   <Footer id="footer" />
 </template>
 
 <script>
-import Carousel from './Carousel.vue'
-import NavBar from './NavBar.vue'
-import Categories from './Categories.vue'
-import Footer from './Footer.vue'
+import NavBar from '../components/NavBar.vue'
+import Videos from '../components/Videos.vue'
+import Footer from '../components/Footer.vue'
 
 export default {
   name: 'App',
   components: {
     NavBar,
-    Carousel,
-    Categories,
+    Videos,
     Footer
   }
 }
@@ -40,6 +37,7 @@ function scrollFunction() {
 <style>
 body {
   margin: 0%;
+  font-family: Arial,Helvetica,sans-serif;
 }
 
 #app {
@@ -56,6 +54,11 @@ body {
   top: 0; /* At the top */
   z-index: 99;
   border-bottom: 5px solid #000;
+}
+
+hr {
+  width: 75%;
+  border-top: 2px solid #000;
 }
 
 #footer {
