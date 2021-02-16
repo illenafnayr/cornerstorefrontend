@@ -73,6 +73,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Charm:wght@700&display=swap');
+
 #videos-container {
     display: flex;
     overflow-wrap: normal;
@@ -95,6 +97,10 @@ export default {
     justify-content: center;
     align-items: center;
     padding: 1%;
+    font-family: 'Charm', cursive;
+    font-size: 20px;
+    font-weight: 900;
+    font-style:italic;
 }
 
 iframe {
