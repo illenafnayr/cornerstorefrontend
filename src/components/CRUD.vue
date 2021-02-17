@@ -1,24 +1,47 @@
 <template>
-<!-- <h1>{{categoryName.toUpperCase()}}</h1> -->
+    <div>
+        <h3>Create Category</h3>
+        <form id="categoryForm" v-on:submit.prevent="createCategory()">
+            <label for="name">Name: </label>
+            <input type="text" name="name" id="name" v-model="categoryForm.name"><br>
+
+            <label for="imgsrc">Image Source</label>
+            <input type="text" name="imgsrc" id="imgsrc" v-model="categoryForm.imgsrc"><br>
+
+            <input type="submit" value="Create Crategory">
+        </form>
+        <br>
+        <h4>Delete Category</h4>
+        <form id="deleteCategory" v-on:submit.prevent="deleteCategory()">
+            <select form="deleteCategory" id="deleteCategory" v-model="categoryUuid">
+                <option v-for="category in categories" :key="category.uuid" :value="category.uuid">{{category.name.toUpperCase()}}</option>
+            </select><br>
+            <input type="submit" value="Delete Category">    
+        </form>
+        
+
+    </div>
+    <hr>
     <div>
         <h3>Add New Product</h3>
         <label for="category">Select Category: </label>
-        <select form="productForm" id="category" v-model="form.categoryUuid">
+        <select form="productForm" id="category" v-model="productForm.categoryUuid">
             <option v-for="category in categories" :key="category.uuid" :value="category.uuid">{{category.name.toUpperCase()}}</option>
         </select>
         <form id="productForm" v-on:submit.prevent="createProduct()">
             <label for="name">Name: </label>
-            <input type="text" name="name" id="name" v-model="form.name"><br>
+            <input type="text" name="name" id="name" v-model="productForm.name"><br>
 
             <label for="imgsrc">Image Source: </label>
-            <input type="text" name="imgsrc" id="imgsrc" v-model="form.imgsrc"><br>
+            <input type="text" name="imgsrc" id="imgsrc" v-model="productForm.imgsrc"><br>
 
             <label for="description">Description: </label>
-            <input type="text" name="description" id="description" v-model="form.description"><br>
+            <input type="text" name="description" id="description" v-model="productForm.description"><br>
 
-            <input type="submit" value="Create Product">
+            <input type="submit" value="Add Product">
         </form>
     </div>
+    <hr>
     <div id="container">
         <div class="productCard" v-for="product in products" :key="product.uuid">
             <span :key="product.category.uuid">{{product.name.toUpperCase()}}</span>
@@ -39,13 +62,18 @@ export default {
     return {
       products: [],
       categories: [],
-      form: {
+      productForm: {
           categoryUuid: '',
           name: '',
           imgsrc: '',
           description: ''
       },
-      productUuid: ''
+      productUuid: '',
+      categoryUuid: '',
+      categoryForm: {
+          name: '',
+          imgsrc: ''
+      }
     }
   },
   mounted() {
@@ -68,24 +96,24 @@ export default {
   methods: {
       createProduct() {
           axios
-            .post('http://localhost:4321/products', this.form)
+            .post('http://localhost:4321/products', this.productForm)
             .then((response) => {
             console.log(response)
-           axios
-      .get('http://localhost:4321/products')
-      .then((response) => {
-        this.products = response.data
-        console.log(this.products)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-      axios
-        .get('http://localhost:4321/categories')
-        .then((response) => {
-            this.categories = response.data
-            console.log(this.categories)
-        })  
+            axios
+                .get('http://localhost:4321/products')
+                .then((response) => {
+                    this.products = response.data
+                    console.log(this.products)
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+            axios
+                .get('http://localhost:4321/categories')
+                .then((response) => {
+                    this.categories = response.data
+                    console.log(this.categories)
+                })  
           })
     },
     deleteProduct(uuid){
@@ -93,22 +121,61 @@ export default {
         axios.delete(`http://localhost:4321/products/${uuid}`).then(() => {
             console.log('product was deleted')
             axios
-      .get('http://localhost:4321/products')
-      .then((response) => {
-        this.products = response.data
-        console.log(this.products)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-      axios
-        .get('http://localhost:4321/categories')
-        .then((response) => {
-            this.categories = response.data
-            console.log(this.categories)
+                .get('http://localhost:4321/products')
+                .then((response) => {
+                    this.products = response.data
+                    console.log(this.products)
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+            axios
+                .get('http://localhost:4321/categories')
+                .then((response) => {
+                    this.categories = response.data
+                    console.log(this.categories)
+            })
         })
+    },
+    createCategory () {
+        axios
+            .post('http://localhost:4321/categories', this.categoryForm)
+            .then((response) => {
+                console.log(response)
+                axios
+                    .get('http://localhost:4321/products')
+                    .then((response) => {
+                        console.log(response.data)
+                        this.products = response.data
+                    })
+                axios
+                    .get('http://localhost:4321/categories')
+                    .then((response) => {
+                        console.log(response.data)
+                        this.categories = response.data
+                    })
+            })
+    },
+    deleteCategory(){
+        axios.delete(`http://localhost:4321/categories/${this.categoryUuid}`).then(() => {
+            console.log('Category was deleted')
+            axios
+                .get('http://localhost:4321/products')
+                .then((response) => {
+                    this.products = response.data
+                    console.log(this.products)
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+            axios
+                .get('http://localhost:4321/categories')
+                .then((response) => {
+                    this.categories = response.data
+                    console.log(this.categories)
+            })
         })
-    }
+    },
 
 }
 }
