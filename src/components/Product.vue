@@ -1,10 +1,15 @@
 <template>
-    <div id="products-container">
-      <div v-for="product in products" :key="product.uuid">
-        <span v-if="product.category.name.toLowerCase()===categoryName" :key="product.category.uuid">{{product.name}}</span>
-        <span v-else></span>
+<h1>{{categoryName.toUpperCase()}}</h1>
+  <div id="container">
+    <template v-for="product in products" :key="product.uuid" >
+      <div class="productCard" v-if="product.category.name.toLowerCase()===categoryName">
+        <span :key="product.category.uuid">{{product.name.toUpperCase()}}</span>
+        <img :src="product.imgsrc" :alt="product.name" class="productImg" >
+        <!-- <span>${{product.Attributes[0].attributeValues[0].price}}</span> -->
+        <button>Add to Cart</button>
       </div>
-    </div>
+    </template>
+  </div>
 </template>
 
 <script>
@@ -35,53 +40,41 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-/* #categories-container{
-    width: 100%;
-    height: 400px;
-    box-sizing: border-box;
+#container {
+  display: flex;
+  justify-content: center;
+}
+
+.productCard {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
-    font-family: Arial,Helvetica,sans-serif;
-    font-weight: 700;
-}
-
-span {
-    padding: 1%;
-    font-size: 28px;
-    color: #444;
-}
-
-#card-container {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.card {
-    height: 96%;
-    width: 250px;
     box-sizing: border-box;
-    border: 1px solid #444;
+    width: 20%;
+    border: 1px solid black;
     border-radius: 2px;
-    margin-left: 2%;
-    margin-right: 2%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    margin: 1%;
+    /* justify-content: center; */
     align-items: center;
-    text-decoration: none;
-    color: #444;
 }
 
-.cardImg {
-    width: 96%;
-    box-sizing: border-box;
-    border: 1px solid #444;
-    border-radius: 2px;
-} */
+.productImg {
+  margin: 1%;
+  width: 95%;
+}
+
+button {
+  width: 30%;
+  margin: 2%;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+  font-weight: 700;
+}
+
+button:hover {
+  background-color: #72dbcaa6;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
 
 </style>
