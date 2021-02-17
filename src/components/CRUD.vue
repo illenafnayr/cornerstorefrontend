@@ -1,11 +1,12 @@
 <template>
 <!-- <h1>{{categoryName.toUpperCase()}}</h1> -->
     <div>
+        <h3>Add New Product</h3>
         <label for="category">Select Category: </label>
         <select form="productForm" id="category" v-model="form.categoryUuid">
             <option v-for="category in categories" :key="category.uuid" :value="category.uuid">{{category.name.toUpperCase()}}</option>
         </select>
-        <form id="productForm" v-on:submit.prevent="submit()">
+        <form id="productForm" v-on:submit.prevent="createProduct()">
             <label for="name">Name: </label>
             <input type="text" name="name" id="name" v-model="form.name"><br>
 
@@ -17,7 +18,6 @@
 
             <input type="submit" value="Create Product">
         </form>
-
     </div>
     <div id="container">
         <div class="productCard" v-for="product in products" :key="product.uuid">
@@ -25,6 +25,7 @@
             <img :src="product.imgsrc" :alt="product.name" class="productImg" >
             <!-- <span>${{product.Attributes[0].attributeValues[0].price}}</span> -->
             <button>Edit</button>
+            <button v-on:click="deleteProduct(product.uuid)">Delete</button>
         </div>
     </div>
 </template>
@@ -43,7 +44,8 @@ export default {
           name: '',
           imgsrc: '',
           description: ''
-      }
+      },
+      productUuid: ''
     }
   },
   mounted() {
@@ -64,16 +66,50 @@ export default {
         })
   },
   methods: {
-      submit() {
+      createProduct() {
           axios
             .post('http://localhost:4321/products', this.form)
             .then((response) => {
             console.log(response)
-            // .catch((error) => {
-            //     console.log(error)  
-            // })  
+           axios
+      .get('http://localhost:4321/products')
+      .then((response) => {
+        this.products = response.data
+        console.log(this.products)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+      axios
+        .get('http://localhost:4321/categories')
+        .then((response) => {
+            this.categories = response.data
+            console.log(this.categories)
+        })  
           })
+    },
+    deleteProduct(uuid){
+        console.log(uuid)
+        axios.delete(`http://localhost:4321/products/${uuid}`).then(() => {
+            console.log('product was deleted')
+            axios
+      .get('http://localhost:4321/products')
+      .then((response) => {
+        this.products = response.data
+        console.log(this.products)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+      axios
+        .get('http://localhost:4321/categories')
+        .then((response) => {
+            this.categories = response.data
+            console.log(this.categories)
+        })
+        })
     }
+
 }
 }
 
